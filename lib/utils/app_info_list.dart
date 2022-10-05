@@ -43,3 +43,18 @@ List<Map<String, dynamic>> ticketList = [
     'seat': 'H 12'
   },
 ];
+
+List<Map<String, dynamic>> userlist = [
+  {
+    'email': 'guilherme@gmail.com',
+    'password': 'qwe123',
+  },
+  {
+    'email': 'abramo@gmail.com',
+    'password': 'qwe123',
+  },
+  {
+    'email': 'gustavo@gmail.com',
+    'password': 'qwe123',
+  },
+];
