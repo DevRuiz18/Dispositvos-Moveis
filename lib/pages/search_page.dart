@@ -49,7 +49,7 @@ class SearchPage extends StatelessWidget {
                 vertical: AppLayout.getWidth(15),
                 horizontal: AppLayout.getHeight(15)),
             decoration: BoxDecoration(
-                color: const Color.fromRGBO(186, 153, 124, 1),
+                color: Color(0xFFBA997C),
                 borderRadius: BorderRadius.circular(AppLayout.getWidth(10))),
             child: Center(
               child: Text(
