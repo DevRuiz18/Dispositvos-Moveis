@@ -1,5 +1,6 @@
 import 'package:book_tickets/pages/home_page.dart';
 import 'package:book_tickets/pages/login_screen.dart';
+import 'package:book_tickets/pages/sign_up.dart';
 import 'package:book_tickets/pages/search_page.dart';
 import 'package:book_tickets/pages/tickets_page.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
@@ -20,7 +21,7 @@ class _BottomBarState extends State<BottomBar> {
     const HomePage(),
     const SearchPage(),
     const TicketsPage(),
-    const LoginScreen()
+    const LoginScreen(),
   ];
 
   void _onItemTapped(int index) {
