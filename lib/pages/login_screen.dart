@@ -36,7 +36,7 @@ class _loginstate extends State<LoginScreen> {
       debugPrint('Everything looks good!');
       debugPrint(_userEmail);
       debugPrint(_password);
-
+       
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const BottomBar()),
@@ -77,7 +77,7 @@ class _loginstate extends State<LoginScreen> {
           TextFormField(
             decoration: const InputDecoration(
               labelText: 'Email',
-              border: OutlineInputBorder(),),
+              enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3),),),
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
                 return 'Please enter your email address';
