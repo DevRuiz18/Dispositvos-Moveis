@@ -60,9 +60,9 @@ class _loginstate extends State<LoginScreen> {
         children: <Widget>[
           Column(children: <Widget>[
             SizedBox(
-              height: AppLayout.getHeight(20),
+              height: AppLayout.getHeight(80),
             ),
-            Image.asset('assets/images/logo.png'),
+            Image.asset('assets/images/avatar.png', scale: 11,),
             SizedBox(
               height: AppLayout.getHeight(10),
             ),
