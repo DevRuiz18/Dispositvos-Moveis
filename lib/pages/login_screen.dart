@@ -75,9 +75,13 @@ class _loginstate extends State<LoginScreen> {
             height: AppLayout.getHeight(20.0),
           ),
           TextFormField(
-            decoration: const InputDecoration(
+            textAlign: TextAlign.left,
+            decoration:  InputDecoration(
+              contentPadding: EdgeInsets.only( left: 20.0),
               labelText: 'Email',
-              enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3),),),
+              filled: true,
+              fillColor: Colors.white,
+              enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Color(0xFFBA997C)),borderRadius: BorderRadius.circular(30),),),
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
                 return 'Please enter your email address';
@@ -92,12 +96,16 @@ class _loginstate extends State<LoginScreen> {
             onChanged: (value) => _userEmail = value,
           ),
           SizedBox(
-            height: AppLayout.getHeight(20.0),
+            height: AppLayout.getHeight(10.0),
           ),
           TextFormField(
-            decoration: const InputDecoration(
+           textAlign: TextAlign.left,
+            decoration:  InputDecoration(
+              contentPadding: EdgeInsets.only( left: 20.0),
               labelText: 'Password',
-              border: OutlineInputBorder(),
+              filled: true,
+              fillColor: Colors.white,
+              enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Color(0xFFBA997C)),borderRadius: BorderRadius.circular(30),),
             ),
             obscureText: true,
             validator: (value) {
@@ -112,7 +120,7 @@ class _loginstate extends State<LoginScreen> {
             },
             onChanged: (value) => _password = value,
           ),
-          SizedBox(height: AppLayout.getHeight(30)),
+          SizedBox(height: AppLayout.getHeight(50)),
           Container(
               child: OutlinedButton(
             style: ButtonStyle(
