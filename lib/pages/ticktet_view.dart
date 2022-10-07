@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:book_tickets/utils/app_styles.dart';
+import 'package:book_tickets/widgets/layout_builder.dart';
 import 'package:book_tickets/widgets/thick_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:book_tickets/utils/app_layout.dart';
@@ -52,7 +53,7 @@ class TicketView extends StatelessWidget {
                       Expanded(child: Container()),
                       const ThickContainer(
                         isColor:
-                            true, ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            null, ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       ),
                       Expanded(
                         child: Stack(
@@ -77,8 +78,7 @@ class TicketView extends StatelessWidget {
                                                   decoration: BoxDecoration(
                                                       color: isColor == null
                                                           ? Colors.white
-                                                          : Colors
-                                                              .grey.shade400),
+                                                          : Colors.white),
                                                 ),
                                               )));
                                 },
@@ -97,7 +97,7 @@ class TicketView extends StatelessWidget {
                       ),
                       const ThickContainer(
                         isColor:
-                            true, /////////////////////////////////////////////////////////////////////////////////////
+                            null, /////////////////////////////////////////////////////////////////////////////////////
                       ),
                       const Spacer(),
                       Text(
@@ -159,32 +159,10 @@ class TicketView extends StatelessWidget {
                             bottomRight: Radius.circular(10))),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                     child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: LayoutBuilder(
-                    builder:
-                        (BuildContext context, BoxConstraints constraints) {
-                      return Flex(
-                        direction: Axis.horizontal,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(
-                            (constraints.constrainWidth() / 25).floor(),
-                            (index) => SizedBox(
-                                  width: 5,
-                                  height: 1,
-                                  child: DecoratedBox(
-                                      decoration: BoxDecoration(
-                                    color: isColor == null
-                                        ? Color(0xFFeeedf2)
-                                        : Colors.grey,
-                                  )),
-                                )),
-                      );
-                    },
-                  ),
-                )),
+                        padding: EdgeInsets.all(8.0),
+                        child: AppLayoutBuilder(sections: 15))),
                 SizedBox(
                   height: AppLayout.getHeight(20),
                   width: AppLayout.getWidth(10),
@@ -204,7 +182,7 @@ class TicketView extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 color: isColor == null
-                    ? Color.fromRGBO(161, 120, 82, 1)
+                    ? const Color.fromRGBO(161, 120, 82, 1)
                     : Colors.white,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(isColor == null ? 21 : 0),
