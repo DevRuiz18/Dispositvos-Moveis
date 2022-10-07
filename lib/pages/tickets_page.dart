@@ -91,8 +91,19 @@ class TicketsPage extends StatelessWidget {
                             actions: [
                               SizedBox(
                                 child: ElevatedButton(
-                                  onPressed: () =>
-                                      Navigator.pop(context, false),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    final snackBar = SnackBar(
+                                      content: const Text('Ticket Added!'),
+                                      backgroundColor: (Colors.grey),
+                                      action: SnackBarAction(
+                                        label: '',
+                                        onPressed: () {},
+                                      ),
+                                    );
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
+                                  },
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all<
                                             Color>(
