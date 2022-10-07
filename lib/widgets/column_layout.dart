@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:gap/gap.dart';
@@ -24,7 +23,7 @@ class AppColumnLayout extends StatelessWidget {
       children: [
         Text(
           firstText,
-          style: Styles.headLineStyle3.copyWith(color: Colors.black),
+          style: Styles.headLineStyle3,
         ),
         Gap(AppLayout.getHeight(5)),
         Text(
