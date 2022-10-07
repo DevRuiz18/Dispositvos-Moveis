@@ -5,7 +5,6 @@ Color primary = const Color.fromARGB(161, 120, 82, 1);
 
 class Styles {
   static Color primaryColor = primary;
-  static Color buttonColor = const Color(0xFFBA997C);
   static Color textColor = const Color(0xFF3b3b3b);
   static Color bgColor = const Color(0xFFeeedf2);
   static Color darkBorwnColor = const Color.fromRGBO(161, 120, 82, 1);
