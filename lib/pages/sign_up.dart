@@ -45,6 +45,15 @@ class _signupstate extends State<sign_up> {
         context,
         MaterialPageRoute(builder: (context) => const BottomBar()),
       );
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content:  Text('Successfully Signed Up', style: Styles.textStyle.copyWith(color: Colors.white)),
+        backgroundColor: (Color.fromARGB(255, 60, 117, 56)),
+        action: SnackBarAction(
+          label: '',
+          onPressed: () {},
+        ),
+      ));
       /* 
       Continute proccessing the provided information with your own logic 
       such us sending HTTP requests, savaing to SQLite database, etc.
