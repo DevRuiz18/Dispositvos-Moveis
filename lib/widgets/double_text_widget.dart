@@ -1,8 +1,10 @@
+import 'package:book_tickets/pages/tickets_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../pages/bottom_bar.dart';
 import '../utils/app_styles.dart';
 
 class AppDoubleTextWidget extends StatelessWidget {
@@ -23,7 +25,11 @@ class AppDoubleTextWidget extends StatelessWidget {
         ),
         InkWell(
             onTap: () {
-              //print("You are tapping");
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TicketsPage(),
+                  ));
             },
             child: Text(smallText,
                 style: Styles.textStyle.copyWith(color: Styles.primaryColor))),
