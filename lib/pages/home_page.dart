@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     children: [
                       const Icon(FluentSystemIcons.ic_fluent_search_regular,
-                          color: Color.fromARGB(201, 173, 146, 1)),
+                          color: Color.fromRGBO(201, 173, 146, 1)),
                       Text(
                         "Search",
                         style: Styles.headLineStyle4,
@@ -107,13 +107,6 @@ class HomePage extends StatelessWidget {
                   "New Movies",
                   style: Styles.headLineStyle2,
                 ),
-                InkWell(
-                    onTap: () {
-                      //print("You are tapping");
-                    },
-                    child: Text("View All",
-                        style: Styles.textStyle
-                            .copyWith(color: Styles.primaryColor))),
               ],
             ),
           ),
