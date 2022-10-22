@@ -1,12 +1,12 @@
 import 'package:book_tickets/pages/home_page.dart';
-import 'package:book_tickets/pages/login_screen.dart';
-import 'package:book_tickets/pages/sign_up.dart';
 import 'package:book_tickets/pages/search_page.dart';
 import 'package:book_tickets/pages/tickets_page.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:book_tickets/pages/login_screen.dart';
+import 'package:book_tickets/pages/sign_up.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
