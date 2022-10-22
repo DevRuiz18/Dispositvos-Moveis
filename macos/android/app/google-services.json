@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "768726774477",
+    "project_id": "dev-mobile-2022",
+    "storage_bucket": "dev-mobile-2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768726774477:android:a3150f6581b8f52dfaef84",
+        "android_client_info": {
+          "package_name": "com.example.book_tickets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768726774477-ri1ciedm8q44fhn7oq6i9bbpbr87q4ak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHaJ7aMKzVfy84gtDZeFBNebv4Yd62Q_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768726774477-ri1ciedm8q44fhn7oq6i9bbpbr87q4ak.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "768726774477-cuhf33hqmatdhb7qhhmbh9868gkjbiuu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bookTickets"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
