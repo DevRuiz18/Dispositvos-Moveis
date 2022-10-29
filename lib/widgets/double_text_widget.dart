@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import '../pages/bottom_bar.dart';
+import '../pages/home_page.dart';
 import '../utils/app_styles.dart';
 
 class AppDoubleTextWidget extends StatelessWidget {
