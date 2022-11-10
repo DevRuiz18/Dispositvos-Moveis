@@ -19,14 +19,14 @@ class _HomePageState extends State<HomePage> {
   int currentPage = 0;
   late PageController pc;
 
-  @override
+  
 
   setCurrentPage(page){
     setState(() {
       currentPage = page;
     });
   }
-
+  @override
   void initState(){
     super.initState();
     pc = PageController(initialPage: currentPage);

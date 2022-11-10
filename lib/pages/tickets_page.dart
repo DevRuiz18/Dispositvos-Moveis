@@ -1,8 +1,13 @@
 import 'package:book_tickets/pages/ticktet_view.dart';
+import 'package:book_tickets/services/auth_service.dart';
+import 'package:book_tickets/services/ticket_service.dart';
 import 'package:book_tickets/utils/app_info_list.dart';
 import 'package:book_tickets/utils/app_styles.dart';
 import 'package:book_tickets/widgets/column_layout.dart';
 import 'package:book_tickets/widgets/ticket_tabs.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -14,9 +19,23 @@ import '../utils/app_layout.dart';
 import '../widgets/layout_builder.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 
-class TicketsPage extends StatelessWidget {
-  const TicketsPage({super.key});
+class TicketsPage extends StatefulWidget {
+  const TicketsPage({Key? key}) : super(key: key);
+  @override
+  _TicketsPage createState() => _TicketsPage();
+}
 
+class _TicketsPage extends State<TicketsPage> {
+  final formKey = GlobalKey<FormState>();
+  final title = TextEditingController();
+  final ticketcode = TextEditingController();
+  final studentid = TextEditingController();
+  final room = TextEditingController();
+  final seat = TextEditingController();
+  final date = TextEditingController();
+
+  final TicketService ticketService = new TicketService();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,31 +74,37 @@ class TicketsPage extends StatelessWidget {
                                 child: Column(
                                   children: <Widget>[
                                     TextFormField(
+                                      controller: title,
                                       decoration: const InputDecoration(
                                         labelText: 'Movie name',
                                       ),
                                     ),
                                     TextFormField(
+                                      controller: ticketcode,
                                       decoration: const InputDecoration(
                                         labelText: 'E-Ticket Code',
                                       ),
                                     ),
                                     TextFormField(
+                                      controller: studentid,
                                       decoration: const InputDecoration(
                                         labelText: 'Studant ID',
                                       ),
                                     ),
                                     TextFormField(
+                                      controller: room,
                                       decoration: const InputDecoration(
                                         labelText: 'Room',
                                       ),
                                     ),
                                     TextFormField(
+                                      controller: seat,
                                       decoration: const InputDecoration(
                                         labelText: 'Seat',
                                       ),
                                     ),
                                     TextFormField(
+                                      controller: date,
                                       decoration: const InputDecoration(
                                         labelText: 'Date-Time',
                                       ),
@@ -93,6 +118,7 @@ class TicketsPage extends StatelessWidget {
                                 child: ElevatedButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
+                                    this.ticketService.insertTicket(title.text, ticketcode.text, studentid.text, room.text, seat.text, date.text);
                                     final snackBar = SnackBar(
                                       content: const Text('Ticket Added!'),
                                       backgroundColor: (Colors.grey),

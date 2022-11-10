@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 
 class AuthException implements Exception{
@@ -23,15 +24,16 @@ class AuthService extends ChangeNotifier{
     });
   }
 
-  _getUser(){
+  getUser(){
     usuario = _auth.currentUser;
     notifyListeners();
   }
 
-  register(String email, String password) async{
+  register(String email, String password, String displayName) async{
     try {
-      await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      _getUser();
+      UserCredential userCred = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      await userCred.user?.updateDisplayName(displayName);
+      getUser();
     } on FirebaseAuthException catch (e) {
       if(e.code == 'weak-password'){
         throw AuthException('The Password is too weak.');
@@ -44,7 +46,7 @@ class AuthService extends ChangeNotifier{
   login(String email, String password) async{
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-      _getUser();
+      getUser();
     } on FirebaseAuthException catch (e) {
       if(e.code == 'user-not-found'){
         throw AuthException('Informed Email is not registered. Please Sign up.');
@@ -56,7 +58,7 @@ class AuthService extends ChangeNotifier{
 
   logout() async{
     await _auth.signOut();
-    _getUser();
+    getUser();
   }
 
 }

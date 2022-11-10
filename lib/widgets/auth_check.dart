@@ -1,3 +1,4 @@
+import 'package:book_tickets/pages/authpage.dart';
 import 'package:book_tickets/pages/home_page.dart';
 import 'package:book_tickets/pages/login_page.dart';
 import 'package:book_tickets/services/auth_service.dart';
@@ -17,7 +18,7 @@ class _AuthCheckState extends State<AuthCheck> {
     AuthService auth = Provider.of<AuthService>(context);
     if(auth.isLoading) 
       return loading();
-    else if(auth.usuario == null) return LoginPage();
+    else if(auth.usuario == null) return AuthPage();
     else return HomePage();
   }
 

@@ -42,6 +42,7 @@ dependencies:
   firebase_database: ^10.0.2
   provider: ^6.0.4
   sqflite: ^2.1.0+1
+  cloud_firestore: ^4.0.3
 
 dev_dependencies:
   flutter_test:

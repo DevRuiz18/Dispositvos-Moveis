@@ -16,33 +16,34 @@ import 'package:provider/provider.dart';
 
 import '../widgets/double_text_widget.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key, required this.changeScreen}) : super(key: key);
+class SignupPage extends StatefulWidget {
+  const SignupPage({Key? key, required this.changeScreen}) : super(key: key);
   final Function(bool parameters) changeScreen;
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignupPageState createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   // Define a key to access the form
   final formKey = GlobalKey<FormState>();
+  final displayName = TextEditingController();
   final email = TextEditingController();
   final password = TextEditingController();
 
   bool isLogin = true;
   bool loading = false;
 
-  login() async {
+  register() async {
     setState(() => loading = true);
     try {
-      await context.read<AuthService>().login(email.text, password.text);
+      await context.read<AuthService>().register(email.text, password.text, displayName.text);
     } on AuthException catch (e) {
       setState(() => loading = false);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
     }
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -64,11 +65,37 @@ class _LoginPageState extends State<LoginPage> {
                   height: AppLayout.getHeight(10),
                 ),
                 Text(
-                  'Sign in to TicketApp',
+                  'Create Account',
                   style: Styles.headLineStyle1,
                 ),
+                
                 Padding(
-                  padding: EdgeInsets.all(24),
+                  padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 24.0),
+                  child: TextFormField(
+                    controller: displayName,
+                    decoration: InputDecoration(
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(width: 2, color: Colors.red),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide:
+                            BorderSide(width: 2, color: Color(0xFFBA997C)),
+                      ),
+                      labelText: 'Full Name',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Please enter your full name';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 24.0),
                   child: TextFormField(
                     controller: email,
                     decoration: InputDecoration(
@@ -98,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsets.symmetric(vertical: 0.0, horizontal: 24.0),
+                      EdgeInsets.symmetric(vertical: 24.0, horizontal: 24.0),
                   child: TextFormField(
                     controller: password,
                     obscureText: true,
@@ -134,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                             Styles.buttonColor)),
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                          login();
+                          register();
                       }
                     },
                     child: Row(
@@ -154,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                               Padding(
                                 padding: EdgeInsets.all(16.0),
                                 child: Text(
-                                  'Sign in',
+                                  'Sign up',
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ),
@@ -163,8 +190,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 TextButton(
-                    onPressed: () => widget.changeScreen(false),
-                    child: Text('New to TicketApp? Create an account.')),
+                    onPressed: () => widget.changeScreen(true),
+                    child: Text('Already have an account? Sign in.')),
               ],
             ),
           ),
