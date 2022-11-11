@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 ---------------------------------------------------------------------------------------------
 Trabalho Desenvolvido pelos alunos:
 Abramo Floriolli, RA: 2165074; (Desenvolvimento Front)
-Guilherme Portela Meller, RA: 2198347; (Desenvolvimento Front)
+Guilherme Portela Meller, RA: 2198347; (Desenvolvimento Front/Back)
 Gustavo Silva Ruiz, RA: 2317516; (Desenvolvimento Front/Design)
 
 Projeto de uma aplicação mobile de carteira digital para ingressos de cinema desenvolvido utilizando o Framework Flutter;
@@ -27,5 +27,5 @@ Instruções de execução:
 -Executar o comando "flutter run";
 
 Excessões:
--O "Login" funciona apenas para demonstrar a funcionalidade, não adicionando usuários em memória ou Banco de Dados, bem como o "Sign Up";
--O cadastro de tickets de mesma forma apenas serve para demosntração da funcionalidade, não salvando dados em memória ou Banco.
+-O ticket principal da aba "Tickets" é meramente ilustrativo, porém os tickets abaixo estão vinculados ao banco;
+-As informações da aba "Perfil" são ilustrativos pois ainda não foi conectado a api;
