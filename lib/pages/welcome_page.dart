@@ -88,7 +88,7 @@ class WelcomePage extends StatelessWidget {
             child: Row(
               children: ticketList
                   .map((singleTicket) => TicketView(
-                        ticket: singleTicket,
+                        ticket: singleTicket, 
                         isColor: null,
                       ))
                   .toList(),

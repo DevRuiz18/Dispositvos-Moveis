@@ -43,7 +43,7 @@ class TicketView extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "${ticket['tittle']}",
+                        "${ticket['title']}",
                         style: isColor == null
                             ? Styles.headLineStyle3
                                 .copyWith(color: Colors.white)
@@ -97,7 +97,7 @@ class TicketView extends StatelessWidget {
                       ),
                       const ThickContainer(
                         isColor:
-                            null, /////////////////////////////////////////////////////////////////////////////////////
+                            null, 
                       ),
                       const Spacer(),
                       Text(

@@ -14,7 +14,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
+import '../models/ticket.dart';
 import '../utils/app_layout.dart';
 import '../widgets/layout_builder.dart';
 import 'package:barcode_widget/barcode_widget.dart';
@@ -33,9 +35,27 @@ class _TicketsPage extends State<TicketsPage> {
   final room = TextEditingController();
   final seat = TextEditingController();
   final date = TextEditingController();
+  final sessiontime = TextEditingController();
+  
+  final loadingTick = true.obs;
+
+  final tickets = [].obs;
 
   final TicketService ticketService = new TicketService();
   
+  @override
+  void initState() {
+    ticketService.getTickets().then((e) {
+      tickets(e);
+      loadingTick(false);
+      setState(() {
+        
+      });
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,12 +106,14 @@ class _TicketsPage extends State<TicketsPage> {
                                       ),
                                     ),
                                     TextFormField(
+                                      keyboardType: TextInputType.number,
                                       controller: studentid,
                                       decoration: const InputDecoration(
                                         labelText: 'Studant ID',
                                       ),
                                     ),
                                     TextFormField(
+                                      keyboardType: TextInputType.number,
                                       controller: room,
                                       decoration: const InputDecoration(
                                         labelText: 'Room',
@@ -106,7 +128,13 @@ class _TicketsPage extends State<TicketsPage> {
                                     TextFormField(
                                       controller: date,
                                       decoration: const InputDecoration(
-                                        labelText: 'Date-Time',
+                                        labelText: 'Date',
+                                      ),
+                                    ),
+                                    TextFormField(
+                                      controller: sessiontime,
+                                      decoration: const InputDecoration(
+                                        labelText: 'Session Time',
                                       ),
                                     ),
                                   ],
@@ -117,8 +145,8 @@ class _TicketsPage extends State<TicketsPage> {
                               SizedBox(
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).pop();
-                                    this.ticketService.insertTicket(title.text, ticketcode.text, studentid.text, room.text, seat.text, date.text);
+                                    Navigator.pop(context);
+                                    this.ticketService.insertTicket(title.text, ticketcode.text, int.parse(studentid.text), int.parse(room.text), seat.text, date.text, sessiontime.text);
                                     final snackBar = SnackBar(
                                       content: const Text('Ticket Added!'),
                                       backgroundColor: (Colors.grey),
@@ -291,10 +319,28 @@ class _TicketsPage extends State<TicketsPage> {
               Gap(AppLayout.getHeight(20)),
               Container(
                 padding: EdgeInsets.only(left: AppLayout.getHeight(0)),
-                child: TicketView(
-                  ticket: ticketList[0],
-                ),
-              )
+                child: Obx(() => loadingTick.value ? Column() : 
+                  Column(
+                    children: tickets.value.map<Widget>((e) {
+                      Map<String, dynamic> gambi = {
+                          "id": e.id,
+                          "title": e.title,
+                          "ticket_code": e.ticketcode,
+                          "student_id": e.studentid,
+                          "room": e.room,
+                          "seat": e.seat,
+                          "runtime": '2h:30min',
+                          "date": e.date,
+                          "session_time": e.sessiontime
+                      };
+
+                      return TicketView(
+                        ticket: gambi,
+                      );
+                    })
+                    .toList()
+                )
+              ))
             ],
           ),
         ],

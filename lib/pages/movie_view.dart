@@ -42,7 +42,7 @@ class MovieScreen extends StatelessWidget {
           ),
           const Gap(5),
           Text(
-            "${movie['tittle']}",
+            "${movie['title']}",
             style: Styles.headLineStyle3.copyWith(color: Colors.white),
           ),
           const Gap(10),
@@ -65,7 +65,7 @@ class MovieScreen extends StatelessWidget {
                             child: Container(
                               child: Column(
                                 children: [
-                                  Text("${movie['tittle']}",
+                                  Text("${movie['title']}",
                                       style: Styles.headLineStyle1
                                           .copyWith(color: Colors.white)),
                                   Gap(AppLayout.getHeight(40)),

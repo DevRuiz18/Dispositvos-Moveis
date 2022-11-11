@@ -1,18 +1,23 @@
 import 'dart:ui';
 
 class Ticket {
+  int? id;
   String title;
   String ticketcode;
   int studentid;
-  int room;
+  int room; 
   String seat;
   String date;
-
+  String sessiontime;
   Ticket(
-      {required this.title,
+      {
+      this.id,
+      required this.title,
       required this.ticketcode,
       required this.room,
       required this.date,
+      required this.sessiontime,
       required this.studentid,
-      required this.seat});
+      required this.seat}
+      );
 }
