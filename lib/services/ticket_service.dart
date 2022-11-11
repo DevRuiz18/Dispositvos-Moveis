@@ -24,7 +24,6 @@ class TicketService{
     'room': room,
     'seat': seat,
     'date': date,
-    'uid': auth.usuario!.uid
     });
   }
 
@@ -35,5 +34,8 @@ class TicketService{
 
     final newRef = database.child("${user.uid}/ticket");
     final snapshot = await newRef.get();
+    if (snapshot.exists){
+      //return snapshot.to
+    }
   }
 }
